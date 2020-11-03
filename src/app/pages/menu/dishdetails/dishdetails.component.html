@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-row>
+            <ion-icon size="large" (click)="goBack()" name="arrow-undo-sharp"></ion-icon>
+            <ion-title>
+                Dish Details
+            </ion-title>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngIf="dishs">
+        <ion-img src="{{BaseURL + dishs.image}}"></ion-img>
+        <ion-card-content>
+            <ion-card-title>
+                {{dishs.name | uppercase}}
+            </ion-card-title>
+            <p>
+                {{dishs.description}}
+            </p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <ion-button icon-left clear small>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-label class="star-comment">{{ avgstars }} stars</ion-label>
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="primary" icon-right clear small>
+                    <ion-icon name="text-sharp"></ion-icon>
+                    <ion-label class="star-comment">{{ numcomments }} Comments</ion-label>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <div [hidden]="dishs">
+        <ion-spinner></ion-spinner>
+        <h4>Loading . . . Please Wait</h4>
+    </div>
+
+    <ion-list *ngIf="dishs">
+        <ion-list-header>
+            Comments
+        </ion-list-header>
+        <ion-item *ngFor="let comment of dishs.comments" text-wrap>
+            <ion-col>
+                <h4> {{comment.comment}} </h4>
+                <p>
+                    <span>
+                        {{comment.rating}} Stars
+                    </span>
+                </p>
+                <p>
+                    <span> --{{comment.author}} {{comment.date | date }} </span>
+                </p>
+            </ion-col>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

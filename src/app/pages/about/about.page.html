@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>About Us</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <h4 class="header-color">
+                Our History
+            </h4>
+        </ion-card-header>
+        <ion-card-content>
+            Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.
+            Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.<br> The restaurant traces its humble beginnings to The Frying Pan, a successful chain
+            started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <h4 class="header-color">
+                Corporate Leadership
+            </h4>
+        </ion-card-header>
+        <ion-card-content>
+            <div *ngIf="leader">
+                <div *ngFor="let leaders of leader">
+                    <ion-row>
+                        <ion-avatar>
+                            <img src="{{BaseURL + leaders.image}}" alt="jay">
+                        </ion-avatar>
+                        <ion-col>
+                            <h2 class="header-font">
+                                {{leaders.name}}
+                            </h2>
+                            <ion-label>
+                                {{leaders.designation}}
+                            </ion-label>
+                            <ion-label>
+                                {{leaders.description}}
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
